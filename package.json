@@ -7,7 +7,11 @@
   },
   "author": "Nick Matantsev <nick.matantsev@gmail.com>",
   "license": "GPL-3.0-only",
+  "husky": {
+    "hooks": {}
+  },
   "devDependencies": {
+    "husky": "^4.3.0",
     "prettier": "^2.1.2"
   }
 }
