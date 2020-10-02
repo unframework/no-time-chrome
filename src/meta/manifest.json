@@ -16,5 +16,12 @@
     "persistent": false
   },
 
+  "content_scripts": [
+    {
+      "matches": ["https://mobile.twitter.com/*"],
+      "js": ["contentTwitter_bundle.js"]
+    }
+  ],
+
   "web_accessible_resources": ["assets/web/*"]
 }

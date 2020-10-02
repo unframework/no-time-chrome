@@ -7,6 +7,7 @@ const bundleOutputPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: {
+    contentTwitter: './src/contentTwitter.ts',
     background: './src/background.ts'
   },
   output: {
