@@ -1,5 +1,19 @@
 console.log('Twitter content script');
 
+// install the overlay
+const mainNode = document.getElementsByTagName('main')[0]; // no need to wait, apparently?
+
+const overlayNode = document.createElement('div');
+overlayNode.style.position = 'absolute';
+overlayNode.style.top = '0';
+overlayNode.style.left = '0';
+overlayNode.style.right = '0';
+overlayNode.style.bottom = '0';
+overlayNode.style.zIndex = '100'; // @todo is this enough?
+overlayNode.style.background = '#ffffff';
+mainNode.appendChild(overlayNode);
+
+// location checker state
 let currentLocation = '';
 let currentCheckAttemptCount = 0;
 
