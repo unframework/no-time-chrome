@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "No Time",
+  "description": "No timelines",
+  "version": "0.0.1",
+
+  "icons": {
+    "128": "fire.png"
+  },
+
+  "permissions": [],
+
+  "background": {
+    "scripts": ["background_bundle.js"],
+    "persistent": false
+  },
+
+  "web_accessible_resources": ["assets/web/*"]
+}
