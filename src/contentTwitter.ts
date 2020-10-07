@@ -1,8 +1,5 @@
 console.log('Twitter content script');
 
-// install the overlay
-const mainNode = document.getElementsByTagName('main')[0]; // no need to wait, apparently?
-
 const overlayNode = document.createElement('div');
 overlayNode.style.position = 'absolute';
 overlayNode.style.top = '0';
@@ -12,7 +9,23 @@ overlayNode.style.bottom = '0';
 overlayNode.style.zIndex = '100'; // @todo is this enough?
 overlayNode.style.background = '#ffffff';
 overlayNode.style.opacity = '1';
-mainNode.appendChild(overlayNode);
+
+// install the overlay when main node becomes available
+async function waitAndInstallOverlay(attemptCount: number): Promise<void> {
+  const timeoutMs = Math.min(500, attemptCount * 50); // linear back-off for simplicity
+  await new Promise((resolve) => setTimeout(resolve, timeoutMs));
+
+  const mainNode = document.getElementsByTagName('main')[0];
+
+  // if not available yet, try again
+  if (!mainNode) {
+    return waitAndInstallOverlay(attemptCount + 1);
+  }
+
+  mainNode.appendChild(overlayNode);
+}
+
+waitAndInstallOverlay(0);
 
 // location checker state
 let currentLocation = '';
